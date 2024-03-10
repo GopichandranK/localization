@@ -25,6 +25,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import i18n from './locales/i18n';
+
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -56,6 +58,9 @@ function Section({children, title}: SectionProps): React.JSX.Element {
 }
 
 function App(): React.JSX.Element {
+
+  const [lang, setLang] = React.useState('en');
+  i18n.changeLanguage('tn')
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -71,25 +76,12 @@ function App(): React.JSX.Element {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <Header />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+         <Text>{i18n.t('greeting')}</Text>
+         <Text>{i18n.t('introduction')}</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
