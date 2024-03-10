@@ -43,9 +43,20 @@ yarn ios
 ```
 
 ### Localization using simple java script file
-refer locales/en.js es.js tn.js i18n.js
+Refer locales/en.js es.js tn.js i18n.js
+#
 i18n.js
+#
 This file defines a simple i18n object with two methods: t, which is used to retrieve translated strings, and changeLanguage, which allows changing the current language.
 
 ### usage
-refer App.tsx
+Refer App.tsx
+#
+import i18n from './locales/i18n';
+#
+i18n.changeLanguage('tn')
+#
+<Text>{i18n.t('greeting')}</Text>
+#
+<Text>{i18n.t('introduction')}</Text>
+
